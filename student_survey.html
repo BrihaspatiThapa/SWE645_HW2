@@ -1,0 +1,80 @@
+<!-- 
+    This is the student_survey.html file for the student survey form. 
+    It includes various input fields to collect information from students 
+    about their experience on campus.
+-->
+    
+<html>
+<body>
+<h1>Student Survey</h1>
+<form>
+    <label for="first_name">First Name:</label><br>
+    <input type="text" id="first_name" name="first_name"><br><br>
+
+    <label for="last_name">Last Name:</label><br>
+    <input type="text" id="last_name" name="last_name"><br><br>
+
+    <label for="street_address">Street Address:</label><br>
+    <input type="text" id="street_address" name="street_address"><br><br>
+
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city"><br><br>
+
+    <label for="state">State:</label><br>
+    <input type="text" id="state" name="state"><br><br>
+
+    <label for="zip_code">Zip Code:</label><br>
+    <input type="text" id="zip_code" name="zip_code"><br><br>
+
+    <label for="phone_number">Phone Number:</label><br>
+    <input type="tel" id="phone_number" name="phone_number"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
+
+    <p>What did you like about the campus?</p>
+    <input type="checkbox" id="students" name="students" value="Students">
+    <label for="students">Students</label><br>
+    <input type="checkbox" id="location" name="location" value="Location">
+    <label for="location">Locations</label><br>
+    <input type="checkbox" id="campus" name="campus" value="Campus">
+    <label for="campus">Campus</label><br>
+    <input type="checkbox" id="atmosphere" name="atmosphere" value="Atmosphere">
+    <label for="atmosphere">Atmosphere</label><br>
+    <input type="checkbox" id="dormitories" name="dormitories" value="Dormitories">
+    <label for="dormitories">Dorm rooms</label><br>
+    <input type="checkbox" id="sports" name="sports" value="Sports">
+    <label for="sports">Sports</label><br><br>
+
+    <p>How did you become interested in the university?</p>
+    <input type="radio" id="friends" name="interest" value="friends">
+    <label for="friends">Friends</label><br>
+    <input type="radio" id="television" name="interest" value="television">
+    <label for="television">Television</label><br>
+    <input type="radio" id="internet" name="interest" value="internet">
+    <label for="internet">Internet</label><br>
+    <input type="radio" id="other" name="interest" value="other">
+    <label for="other">Other</label><br><br> 
+
+    <label for="recommendation">How likely are you to recommend this university to others?</label><br>
+    <select id="recommendation" name="recommendation">
+        <option value="very_likely">Very Likely</option>
+        <option value="likely">Likely</option>
+        <option value="unlikely">Unlikely</option>
+    </select><br><br>
+
+    <label for="raffle">Enter at least ten comma separated numbers ranging from 1 to 100:</label><br>
+    <input type="text" id="raffle" name="raffle"><br><br>
+
+    <label for="comments">Additional Comments:</label><br>
+    <textarea id="comments" name="comments" rows="5" cols="50">
+    </textarea><br><br>
+
+    <label for="date_of_survey">Date of Survey:</label><br>
+    <input type="date" id="date_of_survey" name="date_of_survey"><br><br>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Cancel">
+</form>
+<body>
+</html>
