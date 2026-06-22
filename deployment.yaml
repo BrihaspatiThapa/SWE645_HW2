@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swe645-form-deployment
+  labels:
+    app: swe645-form
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: swe645-form
+  template:
+    metadata:
+      labels:
+        app: swe645-form
+    spec:
+      containers:
+        - name: static-form
+          image: eth420kplus/static-form:0.1
+          ports:
+          - containerPort: 80
+
