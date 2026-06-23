@@ -5,7 +5,6 @@ pipeline {
         // Define environment variables here if needed
         DOCKERHUB_USERNAME = 'eth420kplus'
         IMAGE_NAME = 'static-form'
-        IMAGE_TAG = 'latest'
     }
 
     stages {
@@ -22,7 +21,7 @@ pipeline {
                     // Build Docker image using the Dockerfile in the repository
                     // Store the built image in a variable for later use
                     echo 'Building Docker image...'
-                    dockerImage = docker.build("${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}")
+                    dockerImage = docker.build("${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${env.BUILD_ID}")
                 }
             }
         }
@@ -45,7 +44,7 @@ pipeline {
                     // kubectl looks for the KUBECONFIG environment variable to find k8s cluster credentials
                     // Update the deployment.yaml file with the new image tag and apply the changes to the Kubernetes cluster
                     withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                        sh "sed -i 's|image: .*|image: ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}|' deployment.yaml"
+                        sh "sed -i 's|image: .*|image: ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${env.BUILD_ID}|' deployment.yaml"
                         echo 'Verifying the updated deployment.yaml file...'
                         sh "cat deployment.yaml"
                         echo '----------------------------------------------------'
