@@ -41,15 +41,19 @@ pipeline {
             steps {
                 script {
                     echo 'Updating Kubernetes deployment...'
-                    //Run the replacement command to update the image in the deployment.yaml file
-                    sh "sed -i 's|image: .*|image: ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}|' deployment.yaml"
-                    echo 'Verifying the updated deployment.yaml file...'
-                    sh "cat deployment.yaml"
-                    echo '----------------------------------------------------'
-                    sh """
-                    kubectl apply -f deployment.yaml
-                    kubectl apply -f service.yaml
-                    """
+                    // Use the kubeconfig file stored in Jenkins credentials to authenticate with the Kubernetes cluster
+                    // kubectl looks for the KUBECONFIG environment variable to find k8s cluster credentials
+                    // Update the deployment.yaml file with the new image tag and apply the changes to the Kubernetes cluster
+                    withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+                        sh "sed -i 's|image: .*|image: ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG}|' deployment.yaml"
+                        echo 'Verifying the updated deployment.yaml file...'
+                        sh "cat deployment.yaml"
+                        echo '----------------------------------------------------'
+                        sh """
+                        kubectl apply -f deployment.yaml
+                        kubectl apply -f service.yaml
+                        """
+                    }
                 }
             }
         }
