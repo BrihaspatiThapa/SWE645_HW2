@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Pull code from GitHub repository
                 echo 'Pulling code from GitHub...'
-                git 'https://github.com/BrihaspatiThapa/SWE645_HW2.git'
+                git branch: 'main', url: 'https://github.com/BrihaspatiThapa/SWE645_HW2.git'
             }
         }
         stage('Build Docker Image') {
