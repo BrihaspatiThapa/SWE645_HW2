@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define environment variables here if needed
         DOCKERHUB_USERNAME = 'eth420kplus'
-        IMAGE_NAME = 'eth420kplus/static-form'
+        IMAGE_NAME = 'static-form'
         IMAGE_TAG = 'latest'
     }
 
